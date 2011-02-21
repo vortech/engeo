@@ -1,0 +1,3 @@
+-preferences: use also tranlate.ge option. Without it no translate.ge results are loaded in DetailsList
+-preferences: no offline option -> only translate.ge (will be enabled automatically) is used
+ 
