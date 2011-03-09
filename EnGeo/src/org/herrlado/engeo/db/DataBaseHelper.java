@@ -121,7 +121,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 * handled. This is done by transfering bytestream.
 	 * */
 	private void copyDataBase() throws IOException {
-
+		initDatabase();
 	}
 
 	public void openDataBase() throws SQLException {
