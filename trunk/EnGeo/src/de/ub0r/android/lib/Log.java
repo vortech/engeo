@@ -260,15 +260,16 @@ public final class Log {
 				.getLaunchIntentForPackage(SENDLOG_PACKAGE_NAME);
 		int title, message;
 		if (intent == null) {
-			intent = new Intent(Intent.ACTION_VIEW, Uri
-					.parse("market://search?q=pname:" + SENDLOG_PACKAGE_NAME));
+			intent = new Intent(
+					Intent.ACTION_VIEW,
+					Uri.parse("market://search?q=pname:" + SENDLOG_PACKAGE_NAME));
 			title = R.string.sendlog_install;
 			message = R.string.sendlog_install_hint;
 		} else {
 			intent.putExtra("filter", mTag + ":D *:W");
 			intent.setType("0||android@ub0r.de");
-			intent.putExtra(Intent.EXTRA_SUBJECT, "SendLog: "
-					+ activity.getString(R.string.app_name));
+			intent.putExtra(Intent.EXTRA_SUBJECT,
+					"SendLog: " + activity.getString(R.string.app_name));
 			title = R.string.sendlog_run;
 			message = R.string.sendlog_run_hint;
 		}

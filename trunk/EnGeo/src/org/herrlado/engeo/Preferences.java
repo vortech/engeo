@@ -19,8 +19,9 @@ public class Preferences extends PreferenceActivity implements
 	public static final String USE_TRANSLATEGE = "use_translatege";
 	
 	public static final String USE_OFFLINE = "use_offline";
-	
 
+	public static final String CHANGE_LANG = "change_lang";
+	
 	/** Preference's name: theme. */
 	private static final String PREFS_THEME = "theme";
 	/** Theme: black. */
@@ -41,27 +42,23 @@ public class Preferences extends PreferenceActivity implements
 		Preference p = this.findPreference("send_logs");
 		if (p != null) {
 			p.setOnPreferenceClickListener(// .
-					new Preference.OnPreferenceClickListener() {
-						public boolean onPreferenceClick(
-								final Preference preference) {
-							Log.collectAndSendLog(Preferences.this);
-							return true;
-						}
-					});
+			new Preference.OnPreferenceClickListener() {
+				public boolean onPreferenceClick(final Preference preference) {
+					Log.collectAndSendLog(Preferences.this);
+					return true;
+				}
+			});
 		}
 	}
-	
-	
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		final SharedPreferences p = PreferenceManager
-		.getDefaultSharedPreferences(// .
-		Preferences.this);
+				.getDefaultSharedPreferences(// .
+				Preferences.this);
 	}
-	
-	
+
 	/**
 	 * Get Theme from Preferences.
 	 * 

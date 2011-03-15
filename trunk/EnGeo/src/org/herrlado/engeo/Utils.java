@@ -311,7 +311,7 @@ public final class Utils {
 		final StringBuilder buf = new StringBuilder();
 		if (oldFormat) {
 			buf.append(international2oldformat(// .
-					getRecipientsNumber(recipients[0])));
+			getRecipientsNumber(recipients[0])));
 		} else {
 			buf.append(getRecipientsNumber(recipients[0]));
 		}
@@ -319,7 +319,7 @@ public final class Utils {
 			buf.append(separator);
 			if (oldFormat) {
 				buf.append(international2oldformat(// .
-						getRecipientsNumber(recipients[i])));
+				getRecipientsNumber(recipients[i])));
 			} else {
 				buf.append(getRecipientsNumber(recipients[i]));
 			}
@@ -727,15 +727,15 @@ public final class Utils {
 				registry = new SchemeRegistry();
 				registry.register(new Scheme("http", new PlainSocketFactory(),
 						PORT_HTTP));
-				//final FakeSocketFactory httpsSocketFactory;
-				//if (trustAll) {
-//					httpsSocketFactory = new FakeSocketFactory();
-	//			} else {
-		//			httpsSocketFactory = new FakeSocketFactory(
-			//				knownFingerprints);
-//				}
-				//registry.register(new Scheme("https", httpsSocketFactory,
-					//	PORT_HTTPS));
+				// final FakeSocketFactory httpsSocketFactory;
+				// if (trustAll) {
+				// httpsSocketFactory = new FakeSocketFactory();
+				// } else {
+				// httpsSocketFactory = new FakeSocketFactory(
+				// knownFingerprints);
+				// }
+				// registry.register(new Scheme("https", httpsSocketFactory,
+				// PORT_HTTPS));
 				HttpParams params = new BasicHttpParams();
 				httpClient = new DefaultHttpClient(
 						new ThreadSafeClientConnManager(params, registry),
@@ -825,8 +825,8 @@ public final class Utils {
 				port = PORT_HTTP;
 			}
 		}
-		final CookieOrigin origin = new CookieOrigin(uri.getHost(), port, uri
-				.getPath(), false);
+		final CookieOrigin origin = new CookieOrigin(uri.getHost(), port,
+				uri.getPath(), false);
 		final CookieSpecBase cookieSpecBase = new BrowserCompatSpec();
 		String name;
 		String value;
