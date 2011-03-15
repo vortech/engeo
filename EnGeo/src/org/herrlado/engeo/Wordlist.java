@@ -1,7 +1,5 @@
 package org.herrlado.engeo;
 
-
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -63,29 +61,28 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	// return adapter;
 	// }
 
-
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//int theme = Preferences.getTheme(this);
-		//this.setTheme(theme);
+		// int theme = Preferences.getTheme(this);
+		// this.setTheme(theme);
 		// Thread.setDefaultUncaughtExceptionHandler(new
 		// ChewbaccaUncaughtExceptionHandler(
 		// getApplication().getBaseContext(), null));
 		setContentView(R.layout.wordlist);
-//		 new DictDownloader(getApplicationContext()).execute();
+		// new DictDownloader(getApplicationContext()).execute();
 
 		final ListView list = this.getListView();
 		this.adapter = new WordlistAdapter(this);
 		this.setListAdapter(this.adapter);
-		
+
 		list.setOnItemClickListener(this);
 		list.setOnItemLongClickListener(this);
 
 		editText = (EditText) this.findViewById(R.id.textEdit);
 		editText.addTextChangedListener(adapter);
-		
+
 		registerForContextMenu(list);
 		// db = new DataBaseHelper(this);
 		// db.openDataBase();
@@ -93,9 +90,9 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 	@Override
 	protected void onDestroy() {
-		adapter.db.close();//TODO soll selber tun
+		adapter.db.close();// TODO soll selber tun
 		super.onDestroy();
-		
+
 	}
 
 	@Override
@@ -104,7 +101,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		return parent.showContextMenu();
 		// Intent myIntent = new Intent(view.getContext(), DetailView.class);
 		// startActivityForResult(myIntent, 0);
-		//return true;
+		// return true;
 	}
 
 	@Override
@@ -117,12 +114,12 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		String w = null;
 		// if(isGeo(content)){
 		q = "g";
-		//w = content.substring(0, content.indexOf("=")).trim().toLowerCase();
+		// w = content.substring(0, content.indexOf("=")).trim().toLowerCase();
 		// } else {
 		// w = content.substring(0, content.indexOf("[")).trim().toLowerCase();
 		// }
 
-		//detailIntent.putExtra("content", content);
+		// detailIntent.putExtra("content", content);
 		detailIntent.putExtra("w", w);
 		detailIntent.putExtra("q", q);
 		startActivityForResult(detailIntent, 0);
@@ -143,41 +140,42 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		final SharedPreferences p = prefs();
 		return true;
 	}
+
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
-	                                ContextMenuInfo menuInfo) {
-	  super.onCreateContextMenu(menu, v, menuInfo);
-	  MenuInflater inflater = getMenuInflater();
-	  inflater.inflate(R.menu.context_menu, menu);
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.context_menu, menu);
 	}
-	
+
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-	  AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-	  switch (item.getItemId()) {
-	  case R.id.share:
-	    share(info);
-	    return true;
-	  default:
-	    return super.onContextItemSelected(item);
-	  }
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		switch (item.getItemId()) {
+		case R.id.share:
+			share(info);
+			return true;
+		default:
+			return super.onContextItemSelected(item);
+		}
 	}
-	
+
 	private void share(AdapterContextMenuInfo info) {
 		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
 		shareIntent.setType("text/plain");
 		shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Some text");
-		shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Some other text");
+		shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+				"Some other text");
 		startActivity(Intent.createChooser(shareIntent, "Title for chooser"));
 	}
 
 	public SharedPreferences prefs() {
-		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
+		PreferenceManager.getDefaultSharedPreferences(this)
+				.registerOnSharedPreferenceChangeListener(this);
 		return PreferenceManager.getDefaultSharedPreferences(this);
 	}
-	
-	
-
 
 	@Override
 	public final boolean onOptionsItemSelected(final MenuItem item) {
@@ -194,6 +192,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

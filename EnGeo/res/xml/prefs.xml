@@ -24,6 +24,8 @@
 				android:title="@string/use_translatege" android:summary="@string/use_translatege_summary" />
 			<CheckBoxPreference android:key="enable_offline"
 				android:title="@string/use_offline" android:summary="@string/use_offline_summary" />
+			<Preference android:title="@string/change_lang" 
+				android:summary="@string/change_lang_summary" />
 		</PreferenceScreen>
 	</PreferenceCategory>
 
@@ -50,7 +52,7 @@
 		</PreferenceScreen>
 		<PreferenceScreen android:title="@string/more_apps_">
 			<intent android:action="android.intent.action.VIEW"
-				android:data="market://search?q=pub:&quot;Felix Bechstein&quot;" />
+				android:data="market://search?q=pub:&quot;Lado Kumsiashvili&quot;" />
 		</PreferenceScreen>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/debug_">
