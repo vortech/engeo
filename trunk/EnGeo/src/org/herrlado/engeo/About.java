@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2010 Felix Bechstein
+ * Copyright (C) 2010 Lado Kumsiashvili
  * 
- * This file is part of WebSMS.
+ * This file is part of EnGeo.
  * 
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -25,7 +25,7 @@ import android.widget.TextView;
 /**
  * Display About {@link Activity}.
  * 
- * @author flx
+ * @author Lado Kumsiashvili
  */
 public class About extends Activity {
 	/**
@@ -35,9 +35,9 @@ public class About extends Activity {
 	public final void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.about);
-		this.setTitle(this.getString(R.string.about_) + " v"
-				+ this.getString(R.string.app_version));
-		StringBuffer authors = new StringBuffer();
+		// this.setTitle(this.getString(R.string.about_) + " v"
+		// + this.getString(R.string.app_version));
+		// StringBuffer authors = new StringBuffer();
 
 	}
 }
