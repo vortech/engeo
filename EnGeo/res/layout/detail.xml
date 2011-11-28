@@ -3,7 +3,7 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
     <TextView android:text="TextView" android:id="@+id/detail" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-    <WebView android:layout_width="match_parent" android:id="@+id/translatege" android:layout_height="match_parent"></WebView>
+    <WebView android:layout_width="fill_parent" android:id="@+id/translatege" android:layout_height="fill_parent"></WebView>
 	
 
 </LinearLayout>
