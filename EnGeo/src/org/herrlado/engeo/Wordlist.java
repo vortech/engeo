@@ -1,13 +1,13 @@
 package org.herrlado.engeo;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -16,13 +16,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
-		OnItemLongClickListener, OnSharedPreferenceChangeListener {
+		OnItemLongClickListener, OnSharedPreferenceChangeListener,
+		View.OnClickListener {
 
 	private static final String TAG = "EnGEO";
 
@@ -31,35 +33,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	/** Conversations. */
 	private WordlistAdapter adapter = null;
 
-	// private static final HashMap<Character, Character> to_geo = new
-	// HashMap<Character, Character>(
-	// 33);
-	// private static final HashMap<Character, Character> to_eng = new
-	// HashMap<Character, Character>(
-	// 33);
-
-	// static {
-	// String geo = "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ";
-	// String eng = "abgdevzTiklmnopJrstufqRySCcZwWxjh";
-	// for (int i = 0; i < geo.length(); ++i) {
-	// to_geo.put(eng.charAt(i), geo.charAt(i));
-	// }
-	// for (int i = 0; i < geo.length(); ++i) {
-	// to_eng.put(geo.charAt(i), eng.charAt(i));
-	// }
-	// }
-
-	// /**
-	// * Creates and returns a list adapter for the current list activity
-	// *
-	// * @return
-	// */
-	// protected ListAdapter createAdapter(String[] values) {
-	// // Create a simple array adapter (of type string) with the test values
-	// ListAdapter adapter = new ArrayAdapter<String>(this,
-	// android.R.layout.simple_list_item_1, values);
-	// return adapter;
-	// }
+	private Button btnDict = null;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -82,6 +56,9 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 		editText = (EditText) this.findViewById(R.id.textEdit);
 		editText.addTextChangedListener(adapter);
+
+		btnDict = (Button) this.findViewById(R.id.dicts);
+		btnDict.setOnClickListener(this);
 
 		registerForContextMenu(list);
 		// db = new DataBaseHelper(this);
@@ -107,22 +84,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		Intent detailIntent = new Intent(view.getContext(), DetailView.class);
-		Cursor cursor = (Cursor) parent.getItemAtPosition(position);
-		cursor.getColumnIndex("_id");
-		String q = "q";
-		String w = null;
-		// if(isGeo(content)){
-		q = "g";
-		// w = content.substring(0, content.indexOf("=")).trim().toLowerCase();
-		// } else {
-		// w = content.substring(0, content.indexOf("[")).trim().toLowerCase();
-		// }
 
-		// detailIntent.putExtra("content", content);
-		detailIntent.putExtra("w", w);
-		detailIntent.putExtra("q", q);
-		startActivityForResult(detailIntent, 0);
 	}
 
 	@Override
@@ -193,5 +155,32 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			String key) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		final CharSequence[] dicts = { "English-Georgian", "Georgian-English" };
+		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setTitle("Chose Direction");
+		dialog.setSingleChoiceItems(dicts, -1,
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						switch (which) {
+						case 0:
+							btnDict.setText("EN-GE");
+							dialog.dismiss();
+						case 1:
+							btnDict.setText("GE-EN");
+							dialog.dismiss();
+						}
+					}
+				});
+
+		AlertDialog alert = dialog.create();
+		alert.show();
 	}
 }

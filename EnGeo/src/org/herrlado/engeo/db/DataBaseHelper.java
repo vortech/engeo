@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +14,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
 	// The Android's default system path of your application database.
-	public static String DB_PATH = "/sdcard/engeo/";
+	public static String DB_PATH = "/data/data/org.herrlado.engeo/databases/";
 
 	public static String DB_NAME = "engeo.db";
 

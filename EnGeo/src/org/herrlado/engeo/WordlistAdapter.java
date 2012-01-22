@@ -3,7 +3,6 @@ package org.herrlado.engeo;
 import java.io.LineNumberReader;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.herrlado.engeo.db.DataBaseHelper;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,10 +28,12 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 
 	private static final String TAG = Wordlist.class.getSimpleName();
 
-	private static final HashMap<Character, Character> to_geo = new HashMap<Character, Character>(
-			33);
-	private static final HashMap<Character, Character> to_eng = new HashMap<Character, Character>(
-			33);
+	// private static final HashMap<Character, Character> to_geo = new
+	// HashMap<Character, Character>(
+	// 33);
+	// private static final HashMap<Character, Character> to_eng = new
+	// HashMap<Character, Character>(
+	// 33);
 
 	//
 	// private static String to_latin(CharSequence geo) {
@@ -89,13 +89,14 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		final TextView orig = (TextView) view.findViewById(R.id.word_original);
-		final TextView trans = (TextView) view
-				.findViewById(R.id.word_translate);
+		// final TextView trans = (TextView) view
+		// .findViewById(R.id.word_translate);
 
 		String original = cursor.getString(cursor.getColumnIndex("original"));
 		orig.setText(original);
-		String translate = cursor.getString(cursor.getColumnIndex("translate"));
-		trans.setText(translate);
+		// String translate =
+		// cursor.getString(cursor.getColumnIndex("translate"));
+		// trans.setText(translate);
 	}
 
 	public final HttpGet ENG_GET = new HttpGet("http://translate.ge/q.aspx");

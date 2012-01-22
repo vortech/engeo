@@ -31,6 +31,7 @@ public class DetailView extends Activity {
 
 		final Activity activity = this;
 		webview.setWebChromeClient(new WebChromeClient() {
+			@Override
 			public void onProgressChanged(WebView view, int progress) {
 				// Activities and WebViews measure progress with different
 				// scales.
@@ -40,6 +41,7 @@ public class DetailView extends Activity {
 			}
 		});
 		webview.setWebViewClient(new WebViewClient() {
+			@Override
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {
 				Toast.makeText(activity, "Oh no! " + description,

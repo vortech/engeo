@@ -744,6 +744,7 @@ public final class Utils {
 				httpClient = new DefaultHttpClient();
 			}
 			httpClient.addResponseInterceptor(new HttpResponseInterceptor() {
+				@Override
 				public void process(final HttpResponse response,
 						final HttpContext context) throws HttpException,
 						IOException {

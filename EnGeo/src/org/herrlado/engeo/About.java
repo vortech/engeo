@@ -20,7 +20,6 @@ package org.herrlado.engeo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 /**
  * Display About {@link Activity}.
