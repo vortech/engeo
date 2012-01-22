@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.provider.BaseColumns;
 
 /**
  * Preferences.
@@ -25,12 +24,12 @@ public class Preferences extends PreferenceActivity implements
 	public static final String USE_OFFLINE = "use_offline";
 
 	public static final String CHANGE_LANG = "change_lang";
-	
+
 	public static final String LANG_KA = "ქართული";
 
 	/** Preference's name: theme. */
 	private static final String PREFS_THEME = "themes";
-	
+
 	/** Theme: light. */
 	private static final String THEME_LIGHT = "Light";
 
@@ -48,6 +47,7 @@ public class Preferences extends PreferenceActivity implements
 		if (p != null) {
 			p.setOnPreferenceClickListener(// .
 			new Preference.OnPreferenceClickListener() {
+				@Override
 				public boolean onPreferenceClick(final Preference preference) {
 					Log.collectAndSendLog(Preferences.this);
 					return true;
@@ -55,27 +55,32 @@ public class Preferences extends PreferenceActivity implements
 			});
 		}
 	}
-	
-	public final void localeChange(){
+
+	public final void localeChange() {
 		this.addPreferencesFromResource(R.xml.prefs);
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		Preference p = this.findPreference(sharedPref.getString(CHANGE_LANG, LANG_KA));
+		SharedPreferences sharedPref = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		Preference p = this.findPreference(sharedPref.getString(CHANGE_LANG,
+				LANG_KA));
 		if (p != null && LANG_KA.equals(p)) {
-			p.setOnPreferenceClickListener(
-					new Preference.OnPreferenceClickListener() {
-						
-						@Override
-						public boolean onPreferenceClick(Preference preference) {
-							// TODO Auto-generated method stub
-							Locale local = new Locale("ka");
-							Locale.setDefault(local);
-							Configuration config = new Configuration();
-							config.locale = local;
-							getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
- 							
-							return true;
-						}
-					});
+			p.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+					// TODO Auto-generated method stub
+					Locale local = new Locale("ka");
+					Locale.setDefault(local);
+					Configuration config = new Configuration();
+					config.locale = local;
+					getBaseContext().getResources()
+							.updateConfiguration(
+									config,
+									getBaseContext().getResources()
+											.getDisplayMetrics());
+
+					return true;
+				}
+			});
 		}
 	}
 

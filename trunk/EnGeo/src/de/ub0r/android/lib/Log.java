@@ -80,6 +80,7 @@ public final class Log {
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public void onClick(final DialogInterface dialog, // .
 				final int whichButton) {
 			this.a.startActivity(this.i);
