@@ -1,8 +1,8 @@
 package org.herrlado.engeo;
 
-import android.app.AlertDialog;
+import java.util.ArrayList;
+
 import android.app.ListActivity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -18,13 +18,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
-		OnItemLongClickListener, OnSharedPreferenceChangeListener,
-		View.OnClickListener {
+		OnItemLongClickListener, OnSharedPreferenceChangeListener {
 
 	private static final String TAG = "EnGEO";
 
@@ -32,8 +30,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 	/** Conversations. */
 	private WordlistAdapter adapter = null;
-
-	private Button btnDict = null;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -56,9 +52,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 		editText = (EditText) this.findViewById(R.id.textEdit);
 		editText.addTextChangedListener(adapter);
-
-		btnDict = (Button) this.findViewById(R.id.dicts);
-		btnDict.setOnClickListener(this);
 
 		registerForContextMenu(list);
 		// db = new DataBaseHelper(this);
@@ -84,7 +77,9 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-
+		setContentView(R.layout.detail);
+		ArrayList<String> results = new ArrayList<String>();
+		adapter.loadTranslateGe(editText.getText(), results);
 	}
 
 	@Override
@@ -155,32 +150,5 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			String key) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		final CharSequence[] dicts = { "English-Georgian", "Georgian-English" };
-		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-		dialog.setTitle("Chose Direction");
-		dialog.setSingleChoiceItems(dicts, -1,
-				new DialogInterface.OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						switch (which) {
-						case 0:
-							btnDict.setText("EN-GE");
-							dialog.dismiss();
-						case 1:
-							btnDict.setText("GE-EN");
-							dialog.dismiss();
-						}
-					}
-				});
-
-		AlertDialog alert = dialog.create();
-		alert.show();
 	}
 }

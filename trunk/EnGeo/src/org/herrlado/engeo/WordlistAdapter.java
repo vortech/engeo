@@ -28,57 +28,12 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 
 	private static final String TAG = Wordlist.class.getSimpleName();
 
-	// private static final HashMap<Character, Character> to_geo = new
-	// HashMap<Character, Character>(
-	// 33);
-	// private static final HashMap<Character, Character> to_eng = new
-	// HashMap<Character, Character>(
-	// 33);
-
-	//
-	// private static String to_latin(CharSequence geo) {
-	// StringBuilder sb = new StringBuilder();
-	// for (int i = 0; i < geo.length(); ++i) {
-	// char c = geo.charAt(i);
-	// Character cc = to_eng.get(c);
-	// if (cc == null) {
-	// cc = c;
-	// }
-	// sb.append(cc);
-	// }
-	// return sb.toString();
-	// }
-	//
-	// private static String to_geo(CharSequence latin) {
-	// StringBuilder sb = new StringBuilder();
-	// for (int i = 0; i < latin.length(); ++i) {
-	// char c = latin.charAt(i);
-	// Character cc = to_geo.get(c);
-	// if (cc == null) {
-	// cc = c;
-	// }
-	// sb.append(cc);
-	// }
-	// return sb.toString();
-	// }
-
 	DataBaseHelper db;
 
 	private static boolean isGeo(CharSequence w) {
 		int c = w.charAt(0);
 		return c > 4304 && c < 4337;
 	}
-
-	// public void a(String s){
-
-	// boolean u = prefs().getBoolean(Preferences.USE_TRANSLATEGE, false);
-	// if(u){
-	// loadTranslateGe(s, results);
-	// }
-	// ListAdapter adapter = createAdapter(results
-	// .toArray(new String[] {}));
-	// setListAdapter(adapter);
-	// }
 
 	public WordlistAdapter(Wordlist wordlist) {
 		super(wordlist, android.R.layout.simple_list_item_2, null, true);
@@ -89,26 +44,21 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		final TextView orig = (TextView) view.findViewById(android.R.id.text1);
-		// final TextView trans = (TextView) view
-		// .findViewById(R.id.word_translate);
 
 		String original = cursor.getString(cursor.getColumnIndex("original"));
 		orig.setText(original);
-		
+
 		final TextView trans = (TextView) view.findViewById(android.R.id.text2);
-		// final TextView trans = (TextView) view
-		// .findViewById(R.id.word_translate);
+		// trans.setTextAppearance(context, android.R.attr.textAppearanceLarge);
 
 		String tra = cursor.getString(cursor.getColumnIndex("translate"));
 		trans.setText(tra);
-		// String translate =
-		// cursor.getString(cursor.getColumnIndex("translate"));
-		// trans.setText(translate);
+
 	}
 
-	public final HttpGet ENG_GET = new HttpGet("http://translate.ge/q.aspx");
+	public final HttpGet ENG_GET = new HttpGet("http://translate.ge/q.aspx?w=");
 
-	public final HttpGet GEO_GET = new HttpGet("http://translate.ge/g.aspx");
+	public final HttpGet GEO_GET = new HttpGet("http://translate.ge/g.aspx?w=");
 
 	DefaultHttpClient client = new DefaultHttpClient();
 

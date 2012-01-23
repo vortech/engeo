@@ -4,23 +4,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    <EditText 
+        android:id="@+id/textEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/dicts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EN-GE" />
-
-        <EditText
-            android:id="@+id/textEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.05" />
-    </LinearLayout>
+        <requestFocus />
+    </EditText>
 
 	<ListView
 	    android:id="@id/android:list"
