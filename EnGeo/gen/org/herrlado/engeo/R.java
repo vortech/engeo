@@ -22,13 +22,10 @@ public final class R {
     }
     public static final class id {
         public static final int detail=0x7f080000;
-        public static final int dicts=0x7f080003;
-        public static final int item_settings=0x7f080007;
-        public static final int linearLayout1=0x7f080002;
-        public static final int share=0x7f080006;
-        public static final int textEdit=0x7f080004;
+        public static final int item_settings=0x7f080004;
+        public static final int share=0x7f080003;
+        public static final int textEdit=0x7f080002;
         public static final int translatege=0x7f080001;
-        public static final int word_original=0x7f080005;
     }
     public static final class layout {
         public static final int about=0x7f030000;
