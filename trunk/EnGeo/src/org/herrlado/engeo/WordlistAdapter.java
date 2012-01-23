@@ -81,19 +81,26 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 	// }
 
 	public WordlistAdapter(Wordlist wordlist) {
-		super(wordlist, R.layout.wordlist_item, null, true);
+		super(wordlist, android.R.layout.simple_list_item_2, null, true);
 		db = new DataBaseHelper(wordlist);
 		db.openDataBase();
 	}
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-		final TextView orig = (TextView) view.findViewById(R.id.word_original);
+		final TextView orig = (TextView) view.findViewById(android.R.id.text1);
 		// final TextView trans = (TextView) view
 		// .findViewById(R.id.word_translate);
 
 		String original = cursor.getString(cursor.getColumnIndex("original"));
 		orig.setText(original);
+		
+		final TextView trans = (TextView) view.findViewById(android.R.id.text2);
+		// final TextView trans = (TextView) view
+		// .findViewById(R.id.word_translate);
+
+		String tra = cursor.getString(cursor.getColumnIndex("translate"));
+		trans.setText(tra);
 		// String translate =
 		// cursor.getString(cursor.getColumnIndex("translate"));
 		// trans.setText(translate);
