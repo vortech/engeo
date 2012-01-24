@@ -15,7 +15,7 @@ public class DetailView extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		getWindow().requestFeature(Window.FEATURE_PROGRESS);
+		requestWindowFeature(Window.FEATURE_PROGRESS);
 		String w = getIntent().getExtras().getString("w");
 		String q = getIntent().getExtras().getString("q");
 		String content = getIntent().getExtras().getString("content");
