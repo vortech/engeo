@@ -50,6 +50,7 @@
 	<string-array name="change_lang">
 		<item>System Default</item>
 		<item>ქართული</item>
-	</string-array>	
+	</string-array>
+	<string name="details">Detailed View</string>	
 	
 </resources>

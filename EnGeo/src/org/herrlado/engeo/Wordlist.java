@@ -2,6 +2,7 @@ package org.herrlado.engeo;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -77,9 +79,9 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		setContentView(R.layout.detail);
-		ArrayList<String> results = new ArrayList<String>();
-		adapter.loadTranslateGe(editText.getText(), results);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(R.string.details);
+		
+		builder.show();
 	}
 
 	@Override

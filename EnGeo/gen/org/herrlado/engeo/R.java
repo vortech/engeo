@@ -52,6 +52,7 @@ public final class R {
         public static final int change_lang_summary=0x7f050025;
         public static final int changelog_=0x7f050013;
         public static final int debug_=0x7f050000;
+        public static final int details=0x7f050027;
         public static final int faq_=0x7f05000d;
         public static final int faq_hint=0x7f05000c;
         public static final int feedback_=0x7f050008;
