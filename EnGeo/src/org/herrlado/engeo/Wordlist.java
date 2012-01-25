@@ -25,6 +25,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.TwoLineListItem;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
@@ -87,7 +88,9 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		TextView tv = (TextView) findViewById(android.R.id.text1);
 		//TextView tv = (TextView)((TwoLineListItem)view).getChildAt(0);
 		String str = (String) tv.getText();
-		AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("Detailed View")
+		if(str.contains(" "))
+			str = str.replaceAll(" ", "%20");
+		AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(str)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					
 					@Override
@@ -97,11 +100,17 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 					}
 				});
 		String translation = adapter.loadTranslateGe(str);
-		if (translation != "")
+		if (translation == null)
 		{
+			
+			Toast toast = Toast.makeText(this, "ჩანაწერი არ მოიძებნა", 2000);
+			toast.show();
+//			builder.setMessage("ჩანაწერი არ მოიძებნა");
+//			builder.show();		
+		}else{
 			translation = translation.replaceAll("\\<.*?>","").replaceAll("&nbsp;", " ");
 			builder.setMessage(translation);
-			builder.show();		
+			builder.show();
 		}
 	}
 

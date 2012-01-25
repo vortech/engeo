@@ -21,17 +21,14 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int detail=0x7f080000;
-        public static final int item_settings=0x7f080004;
-        public static final int share=0x7f080003;
-        public static final int textEdit=0x7f080002;
-        public static final int translatege=0x7f080001;
+        public static final int item_settings=0x7f080002;
+        public static final int share=0x7f080001;
+        public static final int textEdit=0x7f080000;
     }
     public static final class layout {
         public static final int about=0x7f030000;
-        public static final int detail=0x7f030001;
-        public static final int wordlist=0x7f030002;
-        public static final int wordlist_item=0x7f030003;
+        public static final int wordlist=0x7f030001;
+        public static final int wordlist_item=0x7f030002;
     }
     public static final class menu {
         public static final int context_menu=0x7f070000;
