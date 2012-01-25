@@ -65,7 +65,7 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 	public final HttpGet GEO_GET = new HttpGet(geo);
 
 	DefaultHttpClient client = new DefaultHttpClient();
-
+	
 	public String loadTranslateGe(CharSequence w) {
 
 		String url;
@@ -84,7 +84,7 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 
 			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
 				Log.w("EnGEO", response.getStatusLine().toString());
-				return "";
+				return null;
 			}
 
 			String content = Utils
@@ -97,7 +97,7 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 			return line;
 		} catch (Exception e) {
 			Log.w(TAG, "Error on client.execute", e);
-			return "";
+			return null;
 		}
 
 	}

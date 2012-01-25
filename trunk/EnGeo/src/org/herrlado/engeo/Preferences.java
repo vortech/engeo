@@ -18,7 +18,7 @@ import android.preference.PreferenceManager;
  */
 public class Preferences extends PreferenceActivity implements
 		SharedPreferences.OnSharedPreferenceChangeListener {
-
+	
 	public static final String USE_TRANSLATEGE = "use_translatege";
 
 	public static final String USE_OFFLINE = "use_offline";
