@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.AlteredCharSequence;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -22,6 +24,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TwoLineListItem;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
 		OnItemLongClickListener, OnSharedPreferenceChangeListener {
@@ -78,10 +82,27 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(R.string.details);
+			long id) {		
 		
-		builder.show();
+		TextView tv = (TextView) findViewById(android.R.id.text1);
+		//TextView tv = (TextView)((TwoLineListItem)view).getChildAt(0);
+		String str = (String) tv.getText();
+		AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("Detailed View")
+				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						dialog.cancel();
+					}
+				});
+		String translation = adapter.loadTranslateGe(str);
+		if (translation != "")
+		{
+			translation = translation.replaceAll("\\<.*?>","").replaceAll("&nbsp;", " ");
+			builder.setMessage(translation);
+			builder.show();		
+		}
 	}
 
 	@Override
