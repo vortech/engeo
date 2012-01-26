@@ -23,8 +23,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -1024,6 +1026,19 @@ public final class Utils {
 			return null;
 		}
 		return data.toString();
+	}
+
+	public static boolean isGeo(CharSequence w) {
+		int c = w.charAt(0);
+		return c > 4304 && c < 4337;
+	}
+
+	public static String urlEncode(CharSequence str, String enc) {
+		try {
+			return URLEncoder.encode(String.valueOf(str), enc);
+		} catch (UnsupportedEncodingException ex) {
+			throw new RuntimeException(ex);
+		}
 	}
 
 	/**

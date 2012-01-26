@@ -2,6 +2,7 @@ package org.herrlado.engeo;
 
 import java.io.LineNumberReader;
 import java.io.StringReader;
+import java.net.URLEncoder;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -26,17 +27,10 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 	private static final String SQL_GEO = "SELECT t2.id as _id, t1.eng as translate, t1.transcription, t2.geo as original, t4.name, t4.abbr FROM eng t1, geo t2, geo_eng t3, types t4 WHERE t2.geo >= ? AND t3.eng_id=t1.id AND t2.id=t3.geo_id AND t4.id=t2.type ORDER BY t2.geo LIMIT 25";
 
 	private static final String TAG = Wordlist.class.getSimpleName();
-	
-	private static final String geo = "http://translate.ge/g.aspx?w=";
-	
-	private static final String eng = "http://translate.ge/q.aspx?w=";
-	
+
 	DataBaseHelper db;
 
-	private static boolean isGeo(CharSequence w) {
-		int c = w.charAt(0);
-		return c > 4304 && c < 4337;
-	}
+
 
 	public WordlistAdapter(Wordlist wordlist) {
 		super(wordlist, android.R.layout.simple_list_item_2, null, true);
@@ -59,47 +53,7 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 
 	}
 
-	public final HttpGet ENG_GET = new HttpGet(eng);
-
-	public final HttpGet GEO_GET = new HttpGet(geo);
-
-	DefaultHttpClient client = new DefaultHttpClient();
 	
-	public String loadTranslateGe(CharSequence w) {
-
-		String url;
-		if (isGeo(w)) {
-			url = geo + w;
-		} else {
-			url = eng + w;
-		}
-
-		HttpGet get = new HttpGet(url);
-		//get.getParams().setParameter("w", w);
-		
-		HttpResponse response = null;
-		try {
-			response = client.execute(get);
-
-			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-				Log.w("EnGEO", response.getStatusLine().toString());
-				return null;
-			}
-
-			String content = Utils
-					.stream2str(response.getEntity().getContent()).trim();
-
-			LineNumberReader reader = new LineNumberReader(new StringReader(
-					content));
-			String line = reader.readLine();
-			
-			return line;
-		} catch (Exception e) {
-			Log.w(TAG, "Error on client.execute", e);
-			return null;
-		}
-
-	}
 
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count,
@@ -121,7 +75,7 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 		final String SQL;
 		final String[] args;
 
-		if (isGeo(s)) {
+		if (Utils.isGeo(s)) {
 			SQL = SQL_GEO;
 			args = new String[] { s.toString().trim() + "%" };
 		} else {
