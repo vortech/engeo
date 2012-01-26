@@ -1,20 +1,11 @@
 package org.herrlado.engeo;
 
-import java.io.LineNumberReader;
-import java.io.StringReader;
-import java.net.URLEncoder;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.herrlado.engeo.db.DataBaseHelper;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
@@ -52,8 +43,6 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 		trans.setText(tra);
 
 	}
-
-	
 
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count,
