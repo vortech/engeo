@@ -11,6 +11,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.sqlite.SQLiteCursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -152,11 +154,17 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		new AsyncTask<Void, Void, Void>() {
 		
 			private String result;
+			ProgressDialog dialog;
 			
-			protected void onPreExecute() {};
+			protected void onPreExecute() {
+				dialog = ProgressDialog.show(Wordlist.this, "", 
+                        "Querying translate.ge...", true, true);
+			};
 			
 			
 			protected void onPostExecute(Void result) {
+				
+				dialog.dismiss();
 				
 				if(this.result == null){
 					Toast toast = Toast.makeText(Wordlist.this, "ჩანაწერი არ მოიძებნა", Toast.LENGTH_SHORT);
@@ -166,7 +174,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 				}
 				
 				new AlertDialog.Builder(Wordlist.this)
-					.setTitle(str)//
+					.setTitle("translate.ge says:")//
 					.setMessage(this.result.replaceAll("\\<.*?>","").replaceAll("&nbsp;", " "))//
 						.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 							@Override
@@ -180,6 +188,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			
 			
 			protected Void doInBackground(Void... params) {
+				Looper.prepare();
 				result = loadTranslateGe(str);
 				return null;
 			};
