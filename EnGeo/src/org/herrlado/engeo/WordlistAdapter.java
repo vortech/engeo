@@ -2,7 +2,6 @@ package org.herrlado.engeo;
 
 import java.io.LineNumberReader;
 import java.io.StringReader;
-import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
