@@ -20,6 +20,7 @@ public class DetailView extends Activity {
 		getWindow().requestFeature(Window.FEATURE_PROGRESS);
 		setContentView(R.layout.detail);
 
+		TextView tv = (TextView) findViewById(R.id.detail);
 		Intent sender = getIntent();
 		extras = sender.getExtras().getCharSequenceArray("extras");
 
@@ -28,8 +29,6 @@ public class DetailView extends Activity {
 		} else {
 			url = eng + Utils.urlEncode(extras[0], "UTF-8");
 		}
-
-		TextView tv = (TextView) findViewById(R.id.detail);
 
 		String str = "";
 		for (int i = 0; i < extras.length; i++) {
