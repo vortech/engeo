@@ -21,8 +21,6 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 
 	DataBaseHelper db;
 
-
-
 	public WordlistAdapter(Wordlist wordlist) {
 		super(wordlist, android.R.layout.simple_list_item_2, null, true);
 		db = new DataBaseHelper(wordlist);
@@ -37,7 +35,6 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 		orig.setText(original);
 
 		final TextView trans = (TextView) view.findViewById(android.R.id.text2);
-		// trans.setTextAppearance(context, android.R.attr.textAppearanceLarge);
 
 		String tra = cursor.getString(cursor.getColumnIndex("translate"));
 		trans.setText(tra);
@@ -66,15 +63,15 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 
 		if (Utils.isGeo(s)) {
 			SQL = SQL_GEO;
-			args = new String[] { s.toString().trim()};
+			args = new String[] { s.toString().trim() };
 		} else {
 			SQL = SQL_ENG;
-			args = new String[] { s.toString().toLowerCase().trim()};
+			args = new String[] { s.toString().toLowerCase().trim() };
 		}
 
 		Cursor c = db.myDataBase.rawQuery(SQL, args);
 		changeCursor(c);
-		
+
 	}
 
 	@Override

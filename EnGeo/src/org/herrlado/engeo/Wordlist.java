@@ -1,30 +1,14 @@
 package org.herrlado.engeo;
 
-import java.io.LineNumberReader;
-import java.io.StringReader;
-import java.net.URLEncoder;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.sqlite.SQLiteCursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Looper;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,8 +19,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
 		OnItemLongClickListener, OnSharedPreferenceChangeListener {
@@ -52,13 +34,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// int theme = Preferences.getTheme(this);
-		// this.setTheme(theme);
-		// Thread.setDefaultUncaughtExceptionHandler(new
-		// ChewbaccaUncaughtExceptionHandler(
-		// getApplication().getBaseContext(), null));
 		setContentView(R.layout.wordlist);
-		// new DictDownloader(getApplicationContext()).execute();
 
 		final ListView list = this.getListView();
 		this.adapter = new WordlistAdapter(this);
@@ -71,8 +47,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		editText.addTextChangedListener(adapter);
 
 		registerForContextMenu(list);
-		// db = new DataBaseHelper(this);
-		// db.openDataBase();
 	}
 
 	@Override
@@ -90,109 +64,19 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		// startActivityForResult(myIntent, 0);
 		// return true;
 	}
-	
-
-
-	DefaultHttpClient client = new DefaultHttpClient();
-	
-	private static final String geo = "http://translate.ge/g.aspx?w=";
-	
-	private static final String eng = "http://translate.ge/q.aspx?w=";
-
-	//public final HttpGet ENG_GET = new HttpGet(eng);
-
-	//public final HttpGet GEO_GET = new HttpGet(geo);
-	
-	
-	public String loadTranslateGe(String w) {
-
-		String url;
-		if (Utils.isGeo(w)) {
-			url = geo + Utils.urlEncode(w, "UTF-8");
-		} else {
-			url = eng + Utils.urlEncode(w, "UTF-8");
-		}
-
-		HttpGet get = new HttpGet(url);
-		//get.getParams().setParameter("w", w);
-		
-		HttpResponse response = null;
-		try {
-			response = client.execute(get);
-
-			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-				Log.w("EnGEO", response.getStatusLine().toString());
-				return null;
-			}
-
-			String content = Utils
-					.stream2str(response.getEntity().getContent()).trim();
-
-			LineNumberReader reader = new LineNumberReader(new StringReader(
-					content));
-			String line = reader.readLine();
-			
-			return line;
-		} catch (Exception e) {
-			Log.w(TAG, "Error on client.execute", e);
-			return null;
-		}
-
-	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {		
-		
-	
-		
+			long id) {
+		Intent detail = new Intent(view.getContext(), DetailView.class);
 		SQLiteCursor c = (SQLiteCursor) adapter.getItem(position);
-		//TextView tv = (TextView) findViewById(android.R.id.text1);
-		//TextView tv = (TextView)((TwoLineListItem)view).getChildAt(0);
-		final String str = c.getString(c.getColumnIndex("original"));
-
-		new AsyncTask<Void, Void, Void>() {
-		
-			private String result;
-			ProgressDialog dialog;
-			
-			protected void onPreExecute() {
-				dialog = ProgressDialog.show(Wordlist.this, "", 
-                        "Querying translate.ge...", true, true);
-			};
-			
-			
-			protected void onPostExecute(Void result) {
-				
-				dialog.dismiss();
-				
-				if(this.result == null){
-					Toast toast = Toast.makeText(Wordlist.this, "ჩანაწერი არ მოიძებნა", Toast.LENGTH_SHORT);
-					toast.setGravity(Gravity.CENTER, 0, 0);
-					toast.show();
-					return;
-				}
-				
-				new AlertDialog.Builder(Wordlist.this)
-					.setTitle("translate.ge says:")//
-					.setMessage(this.result.replaceAll("\\<.*?>","").replaceAll("&nbsp;", " "))//
-						.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								dialog.cancel();
-							}})//
-							.create()//
-							.show();
-			
-			}
-			
-			
-			protected Void doInBackground(Void... params) {
-				Looper.prepare();
-				result = loadTranslateGe(str);
-				return null;
-			};
-		}.execute((Void)null);
+		final CharSequence[] extras = new CharSequence[] {
+				c.getString(c.getColumnIndex("original")),
+				c.getString(c.getColumnIndex("transcription")),
+				c.getString(c.getColumnIndex("abbr")),
+				c.getString(c.getColumnIndex("translate")) };
+		detail.putExtra("extras", extras);
+		startActivityForResult(detail, 0);
 	}
 
 	@Override
