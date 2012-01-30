@@ -2,17 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical" android:paddingTop="5dp" android:background="@color/chocolate">
 
     <EditText
         android:id="@+id/textEdit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="35dp"
+        android:background="@drawable/rounded_corners"
+        android:fitsSystemWindows="true"
+        android:paddingRight="2dp"
+        android:textStyle="italic" android:drawableLeft="@drawable/search" android:drawablePadding="10dp" android:drawableRight="@drawable/close" android:paddingLeft="7dp" android:layout_marginBottom="5dp"/>
+        
 	<ListView
 	    android:id="@id/android:list"
 	    android:layout_width="fill_parent"
-	    android:layout_height="436dp" >
+	    android:layout_height="wrap_content" android:background="@color/black">
 
 	</ListView>
 

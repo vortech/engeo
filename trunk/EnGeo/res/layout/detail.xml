@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" android:background="@color/beige">
 
     <TextView
         android:id="@+id/detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.17"
         android:text="TextView"
-        android:textSize="20dp" android:textStyle="italic">
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="italic" >
 
-</TextView>
-    <WebView android:layout_width="fill_parent" android:id="@+id/translatege" android:layout_height="fill_parent"></WebView>
-	
+    </TextView>
+
+    <WebView
+        android:id="@+id/translatege"
+        android:layout_width="fill_parent"
+        android:layout_height="208dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.85"
+        android:background="@color/lightgrey" />
 
 </LinearLayout>
