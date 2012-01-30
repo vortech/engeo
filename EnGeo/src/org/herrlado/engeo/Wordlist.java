@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.sqlite.SQLiteCursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -12,7 +13,9 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,11 +24,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
-		OnItemLongClickListener, OnSharedPreferenceChangeListener {
+		OnItemLongClickListener, OnSharedPreferenceChangeListener, OnTouchListener {
 
 	private static final String TAG = "EnGEO";
 
 	private EditText editText;
+	//private Drawable btnClear;
 
 	/** Conversations. */
 	private WordlistAdapter adapter = null;
@@ -35,7 +39,9 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wordlist);
-
+		
+	//	btnClear = getResources().getDrawable(R.drawable.close);
+		
 		final ListView list = this.getListView();
 		this.adapter = new WordlistAdapter(this);
 		this.setListAdapter(this.adapter);
@@ -45,7 +51,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 		editText = (EditText) this.findViewById(R.id.textEdit);
 		editText.addTextChangedListener(adapter);
-
+		editText.setOnTouchListener(this);
 		registerForContextMenu(list);
 	}
 
@@ -73,7 +79,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		final CharSequence[] extras = new CharSequence[] {
 				c.getString(c.getColumnIndex("original")),
 				c.getString(c.getColumnIndex("transcription")),
-				c.getString(c.getColumnIndex("abbr")),
+				c.getString(c.getColumnIndex("name")),
 				c.getString(c.getColumnIndex("translate")) };
 		detail.putExtra("extras", extras);
 		startActivityForResult(detail, 0);
@@ -147,5 +153,12 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			String key) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		// TODO Auto-generated method stub
+		editText.setText("");
+		return false;
 	}
 }
