@@ -27,7 +27,8 @@ public class DetailView extends Activity {
 		getWindow().requestFeature(Window.FEATURE_PROGRESS);
 		setContentView(R.layout.detail);
 
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences sharedPref = PreferenceManager
+				.getDefaultSharedPreferences(this);
 		;
 
 		tv = (TextView) findViewById(R.id.detail);
@@ -44,25 +45,26 @@ public class DetailView extends Activity {
 		for (int i = 0; i < extras.length; i++) {
 			str += extras[i] + "\n";
 		}
-		tv.setText(str);
+		tv.setText(str.trim());
 
-		
-		wbView = (WebView) findViewById(R.id.translatege);
-
-		if(sharedPref.getBoolean("enable_translatege", true) != true){
+		if (sharedPref.getBoolean("enable_translatege", false) != true) {
 
 			return;
 
 		} else {
-			dialog = ProgressDialog.show(this, "Loading", "Loading data from translate.ge...", true, true);
-			wbView.setWebViewClient(new WebViewClient(){
-				public boolean shouldOverrideUrlLoading(WebView view, String url){
+			wbView = (WebView) findViewById(R.id.translatege);
+			dialog = ProgressDialog.show(this, "Loading",
+					"Loading data from translate.ge...", true, true);
+			wbView.setWebViewClient(new WebViewClient() {
+				@Override
+				public boolean shouldOverrideUrlLoading(WebView view, String url) {
 					view.loadUrl(url);
 					return true;
 				}
 
+				@Override
 				public void onPageFinished(WebView view, String url) {
-					if(dialog.isShowing()){
+					if (dialog.isShowing()) {
 						dialog.dismiss();
 					}
 				}

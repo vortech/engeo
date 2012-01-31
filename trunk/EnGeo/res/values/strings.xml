@@ -22,7 +22,7 @@
 	<string name="license_">License:</string>
 	
 	
-	<string name="use_translatege">Use translate.ge</string>
+	<string name="use_translatege">Enable translate.ge</string>
     <string name="use_translatege_summary">Loads some additional content from translate.ge as you type.</string>
     <string name="use_offline">Use offline</string>
     <string name="use_offline_summary">Loads some additional content from translate.ge as you type.</string>
