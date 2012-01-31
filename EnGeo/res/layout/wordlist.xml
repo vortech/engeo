@@ -16,13 +16,13 @@
         android:drawablePadding="10dp" 
         android:drawableRight="@drawable/close" 
         android:paddingLeft="7dp" 
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp" android:layout_marginLeft="3dp" android:layout_marginRight="3dp"/>
         
 	<ListView
 	    android:id="@id/android:list"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content" 
 	    android:background="@drawable/rounded_corners_list"
-	    android:scrollingCache="false"/>
+	    android:scrollingCache="false" android:layout_marginLeft="3dp" android:layout_marginRight="3dp"/>
 
 </LinearLayout>

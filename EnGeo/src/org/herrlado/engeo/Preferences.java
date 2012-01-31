@@ -2,7 +2,6 @@ package org.herrlado.engeo;
 
 import java.util.Locale;
 
-import de.ub0r.android.lib.Log;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -10,6 +9,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import de.ub0r.android.lib.Log;
 
 /**
  * Preferences.
@@ -18,7 +18,7 @@ import android.preference.PreferenceManager;
  */
 public class Preferences extends PreferenceActivity implements
 		SharedPreferences.OnSharedPreferenceChangeListener {
-	
+
 	public static final String CHANGE_LANG = "change_lang";
 
 	public static final String LANG_KA = "ქართული";
@@ -78,12 +78,6 @@ public class Preferences extends PreferenceActivity implements
 				}
 			});
 		}
-	}
-	
-	public final void useTranslateGE(){
-		this.addPreferencesFromResource(R.xml.prefs);
-		Preference p = (Preference) findPreference("use_translatege");
-		
 	}
 
 	@Override

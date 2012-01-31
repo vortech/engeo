@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.sqlite.SQLiteCursor;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -13,9 +12,7 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -29,7 +26,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	private static final String TAG = "EnGEO";
 
 	private EditText editText;
-	//private Drawable btnClear;
 
 	/** Conversations. */
 	private WordlistAdapter adapter = null;
@@ -39,9 +35,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wordlist);
-		
-	//	btnClear = getResources().getDrawable(R.drawable.close);
-		
+
 		final ListView list = this.getListView();
 		this.adapter = new WordlistAdapter(this);
 		this.setListAdapter(this.adapter);
