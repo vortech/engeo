@@ -13,21 +13,30 @@
 
 	<PreferenceCategory android:title="@string/appearance_and_behavior">
 		<PreferenceScreen android:title="@string/appearance">
-			<ListPreference android:title="@string/theme"
-				android:key="theme" android:entries="@array/themes"
-				android:entryValues="@array/themes_values" android:defaultValue="@string/theme_default" />
+			<ListPreference 
+			    android:title="@string/theme"
+				android:key="theme" 
+				android:entries="@array/themes"
+				android:entryValues="@array/themes_values" 
+				android:defaultValue="@string/theme_default" />
 		</PreferenceScreen>
 
-		<PreferenceScreen android:title="@string/behavior">
-
-			<CheckBoxPreference android:key="enable_translatege"
-				android:title="@string/use_translatege" android:summary="@string/use_translatege_summary" />
-			<CheckBoxPreference android:key="enable_offline"
-				android:title="@string/use_offline" android:summary="@string/use_offline_summary" />
-			<ListPreference android:title="@string/change_lang"
-				android:key="change_lang" android:entries="@array/change_lang"
+		<PreferenceScreen 
+		    android:title="@string/behavior">
+			<CheckBoxPreference 
+			    android:key="enable_translatege"
+				android:title="@string/use_translatege" 
+				android:summary="@string/use_translatege_summary"/>
+			<!--<CheckBoxPreference 
+			    android:key="enable_offline"
+				android:title="@string/use_offline" 
+				android:summary="@string/use_offline_summary" /> -->
+			<ListPreference 
+			    android:title="@string/change_lang"
+				android:key="change_lang" 
+				android:entries="@array/change_lang"
 				android:summary="@string/change_lang_summary" 
-				android:entryValues="@array/lang_values" />
+				android:entryValues="@array/lang_values" android:defaultValue="true"/>
 		</PreferenceScreen>
 	</PreferenceCategory>
 
@@ -35,7 +44,8 @@
 		<PreferenceScreen android:title="@string/about_"
 			android:summary="@string/about_hint">
 			<intent android:action="android.intent.action.MAIN"
-				android:targetPackage="org.herrlado.engeo" android:targetClass="org.herrlado.engeo.About" />
+				android:targetPackage="org.herrlado.engeo" 
+				android:targetClass="org.herrlado.engeo.About" />
 		</PreferenceScreen>
 		<PreferenceScreen android:title="@string/feedback_"
 			android:summary="@string/feedback_hint">
@@ -49,6 +59,7 @@
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/debug_">
 		<PreferenceScreen android:key="send_logs"
-			android:title="@string/send_logs" android:summary="@string/send_logs_hint" />
+			android:title="@string/send_logs" 
+			android:summary="@string/send_logs_hint" />
 	</PreferenceCategory>
 </PreferenceScreen>

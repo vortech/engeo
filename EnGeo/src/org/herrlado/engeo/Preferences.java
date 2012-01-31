@@ -19,10 +19,6 @@ import android.preference.PreferenceManager;
 public class Preferences extends PreferenceActivity implements
 		SharedPreferences.OnSharedPreferenceChangeListener {
 	
-	public static final String USE_TRANSLATEGE = "use_translatege";
-
-	public static final String USE_OFFLINE = "use_offline";
-
 	public static final String CHANGE_LANG = "change_lang";
 
 	public static final String LANG_KA = "ქართული";
@@ -82,6 +78,12 @@ public class Preferences extends PreferenceActivity implements
 				}
 			});
 		}
+	}
+	
+	public final void useTranslateGE(){
+		this.addPreferencesFromResource(R.xml.prefs);
+		Preference p = (Preference) findPreference("use_translatege");
+		
 	}
 
 	@Override

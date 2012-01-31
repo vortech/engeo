@@ -24,7 +24,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
-		OnItemLongClickListener, OnSharedPreferenceChangeListener, OnTouchListener {
+		OnItemLongClickListener, OnSharedPreferenceChangeListener {
 
 	private static final String TAG = "EnGEO";
 
@@ -51,7 +51,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 		editText = (EditText) this.findViewById(R.id.textEdit);
 		editText.addTextChangedListener(adapter);
-		editText.setOnTouchListener(this);
 		registerForContextMenu(list);
 	}
 
@@ -153,12 +152,5 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			String key) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		// TODO Auto-generated method stub
-		editText.setText("");
-		return false;
 	}
 }

@@ -3,7 +3,9 @@ package org.herrlado.engeo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -25,6 +27,9 @@ public class DetailView extends Activity {
 		getWindow().requestFeature(Window.FEATURE_PROGRESS);
 		setContentView(R.layout.detail);
 
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		;
+
 		tv = (TextView) findViewById(R.id.detail);
 		Intent sender = getIntent();
 		extras = sender.getExtras().getCharSequenceArray("extras");
@@ -40,24 +45,32 @@ public class DetailView extends Activity {
 			str += extras[i] + "\n";
 		}
 		tv.setText(str);
-		
-		dialog = ProgressDialog.show(this, "Loading", "Loading data from translate.ge...");
-		wbView = (WebView) findViewById(R.id.translatege);
-		
-		wbView.setWebViewClient(new WebViewClient(){
-			public boolean shouldOverrideUrlLoading(WebView view, String url){
-				view.loadUrl(url);
-				return true;
-			}
-			
-			public void onPageFinished(WebView view, String url) {
-				if(dialog.isShowing()){
-					dialog.dismiss();
-				}
-			}
 
-		});
-		wbView.loadUrl(url);
+		
+		wbView = (WebView) findViewById(R.id.translatege);
+
+		if(sharedPref.getBoolean("enable_translatege", true) != true){
+
+			return;
+
+		} else {
+			dialog = ProgressDialog.show(this, "Loading", "Loading data from translate.ge...", true, true);
+			wbView.setWebViewClient(new WebViewClient(){
+				public boolean shouldOverrideUrlLoading(WebView view, String url){
+					view.loadUrl(url);
+					return true;
+				}
+
+				public void onPageFinished(WebView view, String url) {
+					if(dialog.isShowing()){
+						dialog.dismiss();
+					}
+				}
+
+			});
+
+			wbView.loadUrl(url);
+		}
 
 	}
 }
