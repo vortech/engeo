@@ -13,9 +13,9 @@ import android.widget.TextView;
 public class WordlistAdapter extends ResourceCursorAdapter implements
 		TextWatcher {
 
-	private static final String SQL_ENG = "SELECT t1.id as _id, t1.eng as original, t1.transcription, t2.geo as translate, t4.name, t4.abbr FROM eng t1, geo t2, geo_eng t3, types t4 WHERE t1.eng >= ? AND t3.eng_id=t1.id AND t2.id=t3.geo_id AND t4.id=t2.type GROUP BY t1.eng LIMIT 25";
+	private static final String SQL_ENG = "SELECT MAX(t1.id) as _id, t1.eng as original, t1.transcription, group_concat(t2.geo, ', ') as translate, t4.name, t4.abbr FROM eng t1, geo t2, geo_eng t3, types t4 WHERE t1.eng >= ? AND t3.eng_id=t1.id AND t2.id=t3.geo_id AND t4.id=t2.type GROUP BY t1.eng LIMIT 25";
 
-	private static final String SQL_GEO = "SELECT t2.id as _id, t1.eng as translate, t1.transcription, t2.geo as original, t4.name, t4.abbr FROM eng t1, geo t2, geo_eng t3, types t4 WHERE t2.geo >= ? AND t3.eng_id=t1.id AND t2.id=t3.geo_id AND t4.id=t2.type GROUP BY t2.geo LIMIT 25";
+	private static final String SQL_GEO = "SELECT MAX(t2.id) as _id, group_concat(t1.eng, ', ') as translate, t1.transcription, t2.geo as original, t4.name, t4.abbr FROM eng t1, geo t2, geo_eng t3, types t4 WHERE t2.geo >= ? AND t3.eng_id=t1.id AND t2.id=t3.geo_id AND t4.id=t2.type GROUP BY t2.geo LIMIT 25";
 
 	private static final String TAG = Wordlist.class.getSimpleName();
 
