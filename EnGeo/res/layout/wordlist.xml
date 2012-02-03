@@ -23,6 +23,8 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content" 
 	    android:background="@drawable/rounded_corners_list"
-	    android:scrollingCache="false" android:layout_marginLeft="3dp" android:layout_marginRight="3dp"/>
+	    android:scrollingCache="false" 
+	    android:layout_marginLeft="3dp" 
+	    android:layout_marginRight="3dp" />
 
 </LinearLayout>
