@@ -41,11 +41,15 @@ public class DetailView extends Activity {
 			url = eng + Utils.urlEncode(extras[0], "UTF-8");
 		}
 
-		String str = "";
-		for (int i = 0; i < extras.length; i++) {
-			str += extras[i] + "\n";
-		}
-		tv.setText(str.trim());
+		// String str = "";
+		// for (int i = 0; i < extras.length; i++) {
+		// str += extras[i] + "\n";
+		// }
+		// tv.setText(str);
+
+		tv.setText(extras[0] + "\n" + "\t" + extras[1] + "\n" + "\t" + "\t"
+				+ extras[2].toString().toLowerCase() + "\n"
+				+ extras[3].toString().replaceAll(", ", "\n"));
 
 		if (sharedPref.getBoolean("enable_translatege", false) != true) {
 
