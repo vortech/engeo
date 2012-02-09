@@ -5,14 +5,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.sqlite.SQLiteCursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,11 +26,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 public class Wordlist extends ListActivity implements OnItemClickListener,
-		OnItemLongClickListener, OnSharedPreferenceChangeListener {
+		OnItemLongClickListener, OnSharedPreferenceChangeListener,
+		OnTouchListener {
 
 	private static final String TAG = "EnGEO";
 
 	private EditText editText;
+	private Drawable x, s;
 
 	/** Conversations. */
 	private WordlistAdapter adapter = null;
@@ -43,8 +50,38 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 		list.setOnItemClickListener(this);
 		list.setOnItemLongClickListener(this);
 
+		x = getResources().getDrawable(R.drawable.close);
+		x.setBounds(0, 0, x.getIntrinsicWidth(), x.getIntrinsicHeight());
+		s = getResources().getDrawable(R.drawable.search);
+		s.setBounds(0, 0, s.getIntrinsicWidth(), s.getIntrinsicHeight());
+
 		editText = (EditText) this.findViewById(R.id.textEdit);
 		editText.addTextChangedListener(adapter);
+		editText.setCompoundDrawables(s, null, editText.getText().toString()
+				.equals("") ? null : x, null);
+		editText.setOnTouchListener(this);
+		editText.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence st, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				editText.setCompoundDrawables(s, null, x, null);
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 		registerForContextMenu(list);
 	}
 
@@ -146,5 +183,22 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			String key) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		// TODO Auto-generated method stub
+		if (editText.getCompoundDrawables()[2] == null) {
+			return false;
+		}
+		if (event.getAction() != MotionEvent.ACTION_UP) {
+			return false;
+		}
+		if (event.getX() > editText.getWidth() - editText.getPaddingRight()
+				- x.getIntrinsicWidth()) {
+			editText.setText("");
+			editText.setCompoundDrawables(s, null, null, null);
+		}
+		return false;
 	}
 }
