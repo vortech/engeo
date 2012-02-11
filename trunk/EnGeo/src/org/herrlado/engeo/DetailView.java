@@ -16,7 +16,7 @@ public class DetailView extends Activity {
 	private static final String geo = "http://translate.ge/g.aspx?w=";
 	private static final String eng = "http://translate.ge/q.aspx?w=";
 	WebView wbView;
-	TextView tv;
+	TextView orig, transcript, name, trans;
 	ProgressDialog dialog;
 	CharSequence[] extras;
 	String url;
@@ -29,9 +29,11 @@ public class DetailView extends Activity {
 
 		SharedPreferences sharedPref = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		;
 
-		tv = (TextView) findViewById(R.id.detail);
+		orig = (TextView) findViewById(R.id.origin);
+		transcript = (TextView) findViewById(R.id.transcript);
+		name = (TextView) findViewById(R.id.name);
+		trans = (TextView) findViewById(R.id.trans);
 		Intent sender = getIntent();
 		extras = sender.getExtras().getCharSequenceArray("extras");
 
@@ -47,9 +49,10 @@ public class DetailView extends Activity {
 		// }
 		// tv.setText(str);
 
-		tv.setText(extras[0] + "\n" + "\t" + extras[1] + "\n" + "\t" + "\t"
-				+ extras[2].toString().toLowerCase() + "\n"
-				+ extras[3].toString().replaceAll(", ", "\n"));
+		orig.setText(extras[0]);
+		transcript.setText(extras[1]);
+		name.setText(extras[2].toString().toLowerCase());
+		trans.setText(extras[3].toString());
 
 		if (sharedPref.getBoolean("enable_translatege", false) != true) {
 
