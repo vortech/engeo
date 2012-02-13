@@ -29,7 +29,7 @@
     
     <string name="appearance">Appearance</string>
 	<string name="behavior">Behavior</string>
-	<string name="appearance_and_behavior">Appearance &amp; behavior</string>
+	<string name="appearance_and_behavior">Behavior</string>
     
     <string name="send_logs">Send logs</string>
 	<string name="send_logs_hint">Install the free SendLog application to collect the device log and send it to the developer.</string>
