@@ -13,10 +13,10 @@
 	<string name="faq_hint">Some tips and tricks, how to set up this app.</string>
 	<string name="faq_">FAQ</string>
 	<string name="source_">Sourcecode:</string>
-	<string name="source">http://github.com/herrlado/engeo</string>
+	<string name="source">http://code.google.com/p/engeo/source/browse/</string>
 	<string name="website_">Website:</string>
-	<string name="website">http://github.com/herrlado/engeo</string>
-	<string name="author0">Lado Kumsiashvili &lt;herrlado@gmail.com&gt;</string>
+	<string name="website">http://code.google.com/p/engeo/</string>
+	<string name="author0">Zurab Kumsiashvili &lt;zkumsiashvili@gmail.com&gt;</string>
 	<string name="changelog_">Changelog</string>
 	<string name="license">GPLv3 - see http://www.gnu.org/licenses/gpl-3.0.txt</string>
 	<string name="license_">License:</string>
