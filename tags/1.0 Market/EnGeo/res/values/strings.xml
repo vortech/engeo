@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Settings</string>
+    <string name="app_name">Georgian-English dictionary</string>
+    <string name="app_version">1</string>
+    <string name="about_">About</string>
+	<string name="about">EnGeo</string>
+	<string name="about_hint">About this app</string>
+	<string name="feedback_">Feedback</string>
+	<string name="feedback_hint">Report bugs, request features …</string>
+	<string name="author_">Author:</string>
+	<string name="more_apps_">More Apps..</string>
+	<string name="faq_hint">Some tips and tricks, how to set up this app.</string>
+	<string name="faq_">FAQ</string>
+	<string name="source_">Sourcecode:</string>
+	<string name="source">http://code.google.com/p/engeo/source/browse/</string>
+	<string name="website_">Website:</string>
+	<string name="website">http://code.google.com/p/engeo/</string>
+	<string name="author0">Zurab Kumsiashvili &lt;zkumsiashvili@gmail.com&gt;</string>
+	<string name="changelog_">Changelog</string>
+	<string name="license">GPLv3 - see http://www.gnu.org/licenses/gpl-3.0.txt</string>
+	<string name="license_">License:</string>
+	
+	
+	<string name="use_translatege">Enable translate.ge</string>
+    <string name="use_translatege_summary">Loads some additional content from translate.ge as you type.</string>
+    <string name="use_offline">Use offline</string>
+    <string name="use_offline_summary">Loads some additional content from translate.ge as you type.</string>
+    
+    <string name="appearance">Appearance</string>
+	<string name="behavior">Behavior</string>
+	<string name="appearance_and_behavior">Behavior</string>
+    
+    <string name="send_logs">Send logs</string>
+	<string name="send_logs_hint">Install the free SendLog application to collect the device log and send it to the developer.</string>
+	<string name="sendlog_run">Run SendLog</string>
+	<string name="sendlog_run_hint">SendLog will collect the device log and send it to the developer.\nYou will have an opportunity to review and modify the data being sent.</string>
+	<string name="sendlog_install">Install SendLog</string>
+	<string name="sendlog_install_hint">Install the free SendLog application to collect the device log and send it to the developer.</string>
+    
+
+	<string name="share">Share</string>
+	<string name="details">Detailed View</string>
+	<string name="debug_">Debug</string>
+	<string name="type_your_word">Type your word</string>	
+</resources>

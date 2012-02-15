@@ -1,0 +1,5 @@
+-preferences: use also tranlate.ge option. Without it no translate.ge results are loaded in DetailsList
+-preferences: no offline option -> only translate.ge (will be enabled automatically) is used
+-break down the text loaded from translate.ge an show them as links in translatege WebView with backlinks on translate.ge
+ 
+ 
