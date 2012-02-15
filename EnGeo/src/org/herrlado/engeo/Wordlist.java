@@ -66,8 +66,8 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			public void onTextChanged(CharSequence st, int start, int before,
 					int count) {
 				// TODO Auto-generated method stub
-				editText.setCompoundDrawables(s, null, editText.getText().toString()
-						.equals("") ? null : x, null);
+				editText.setCompoundDrawables(s, null, editText.getText()
+						.toString().equals("") ? null : x, null);
 			}
 
 			@Override
@@ -107,7 +107,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 			long id) {
 		Intent detail = new Intent(view.getContext(), DetailView.class);
 		SQLiteCursor c = (SQLiteCursor) adapter.getItem(position);
-		final CharSequence[] extras = new CharSequence[] {
+		final String[] extras = new String[] {
 				c.getString(c.getColumnIndex("original")),
 				c.getString(c.getColumnIndex("transcription")),
 				c.getString(c.getColumnIndex("name")),

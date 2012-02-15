@@ -18,7 +18,7 @@ public class DetailView extends Activity {
 	WebView wbView;
 	TextView orig, transcript, name, trans;
 	ProgressDialog dialog;
-	CharSequence[] extras;
+	String[] extras;
 	String url;
 
 	@Override
@@ -42,12 +42,6 @@ public class DetailView extends Activity {
 		} else {
 			url = eng + Utils.urlEncode(extras[0], "UTF-8");
 		}
-
-		// String str = "";
-		// for (int i = 0; i < extras.length; i++) {
-		// str += extras[i] + "\n";
-		// }
-		// tv.setText(str);
 
 		orig.setText(extras[0]);
 		transcript.setText(extras[1]);

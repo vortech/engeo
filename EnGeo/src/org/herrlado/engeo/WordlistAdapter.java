@@ -62,7 +62,7 @@ public class WordlistAdapter extends ResourceCursorAdapter implements
 		final String SQL;
 		final String[] args;
 
-		if (Utils.isGeo(s)) {
+		if (Utils.isGeo(s.toString())) {
 			SQL = SQL_GEO;
 			args = new String[] { s.toString().trim() };
 		} else {
