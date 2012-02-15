@@ -48,7 +48,7 @@ public class DetailView extends Activity {
 		name.setText(extras[2].toString().toLowerCase());
 		trans.setText(extras[3].toString());
 
-		if (sharedPref.getBoolean("enable_translatege", false) != true) {
+		if (!sharedPref.getBoolean(getString(R.string.use_translatege), false)) {
 
 			return;
 
