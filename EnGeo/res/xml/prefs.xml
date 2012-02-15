@@ -13,7 +13,7 @@
 
 	<PreferenceCategory android:title="@string/use_translatege">
 			<CheckBoxPreference 
-			    android:key="enable_translatege"
+			    android:key="@string/use_translatege"
 				android:title="@string/use_translatege" 
 				android:summary="@string/use_translatege_summary"/>
 	</PreferenceCategory>

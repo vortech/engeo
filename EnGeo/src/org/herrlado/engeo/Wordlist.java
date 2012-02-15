@@ -88,7 +88,7 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 
 	@Override
 	protected void onDestroy() {
-		adapter.db.close();// TODO soll selber tun
+		adapter.db.close();
 		super.onDestroy();
 
 	}
@@ -97,9 +97,6 @@ public class Wordlist extends ListActivity implements OnItemClickListener,
 	public boolean onItemLongClick(AdapterView<?> parent, View view,
 			int position, long id) {
 		return parent.showContextMenu();
-		// Intent myIntent = new Intent(view.getContext(), DetailView.class);
-		// startActivityForResult(myIntent, 0);
-		// return true;
 	}
 
 	@Override
