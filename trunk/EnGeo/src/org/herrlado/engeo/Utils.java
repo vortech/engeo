@@ -1028,12 +1028,12 @@ public final class Utils {
 		return data.toString();
 	}
 
-	public static boolean isGeo(CharSequence w) {
+	public static boolean isGeo(String w) {
 		int c = w.charAt(0);
 		return c > 4304 && c < 4337;
 	}
 
-	public static String urlEncode(CharSequence str, String enc) {
+	public static String urlEncode(String str, String enc) {
 		try {
 			return URLEncoder.encode(String.valueOf(str), enc);
 		} catch (UnsupportedEncodingException ex) {
