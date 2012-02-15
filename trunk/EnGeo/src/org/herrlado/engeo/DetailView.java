@@ -35,7 +35,7 @@ public class DetailView extends Activity {
 		name = (TextView) findViewById(R.id.name);
 		trans = (TextView) findViewById(R.id.trans);
 		Intent sender = getIntent();
-		extras = sender.getExtras().getCharSequenceArray("extras");
+		extras = sender.getExtras().getStringArray("extras");
 
 		if (Utils.isGeo(extras[0])) {
 			url = geo + Utils.urlEncode(extras[0], "UTF-8");
