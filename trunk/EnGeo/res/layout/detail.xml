@@ -6,25 +6,25 @@
 
     <TextView
         android:id="@+id/origin"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners_details_top" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:layout_marginTop="2dp" android:textColor="@color/black" android:textSize="25dp" android:textStyle="bold|italic" android:paddingLeft="5dp"/>
 
     <TextView
         android:id="@+id/transcript"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/lightgrey" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:textColor="@color/black" android:textSize="15dp" android:paddingLeft="10dp"/>
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/lightgrey" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:textColor="@color/green" android:typeface="serif" android:textStyle="italic" android:paddingLeft="20dp" android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/trans"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners_details_botom" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:layout_marginBottom="2dp" android:textColor="@color/black" android:paddingLeft="19dp" android:paddingBottom="2dp"/>
 
