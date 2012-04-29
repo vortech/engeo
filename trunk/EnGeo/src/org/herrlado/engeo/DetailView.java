@@ -72,7 +72,9 @@ public class DetailView extends Activity {
 
 			});
 
+			wbView.getSettings().setBuiltInZoomControls(true);
 			wbView.loadUrl(url);
+
 		}
 
 	}
