@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 public class DetailView extends Activity {
 
-	private static final String geo = "http://translate.ge/g.aspx?w=";
-	private static final String eng = "http://translate.ge/q.aspx?w=";
+	private static final String geo = "http://translate.ge/Main/Translate?text=";
+	private static final String eng = "http://translate.ge/Main/Translate?text=";
 	WebView wbView;
 	TextView orig, transcript, name, trans;
 	ProgressDialog dialog;
@@ -38,9 +38,9 @@ public class DetailView extends Activity {
 		extras = sender.getExtras().getStringArray("extras");
 
 		if (Utils.isGeo(extras[0])) {
-			url = geo + Utils.urlEncode(extras[0], "UTF-8");
+			url = geo + Utils.urlEncode(extras[0], "UTF-8") + "&lang=ge&";
 		} else {
-			url = eng + Utils.urlEncode(extras[0], "UTF-8");
+			url = eng + Utils.urlEncode(extras[0], "UTF-8") + "&lang=en&";
 		}
 
 		orig.setText(extras[0]);
@@ -71,7 +71,7 @@ public class DetailView extends Activity {
 				}
 
 			});
-
+			
 			wbView.getSettings().setBuiltInZoomControls(true);
 			wbView.loadUrl(url);
 
