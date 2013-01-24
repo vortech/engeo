@@ -2,36 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" android:background="@color/chocolate">
+    android:background="@color/chocolate"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/origin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corners_details_top" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:layout_marginTop="2dp" android:textColor="@color/black" android:textSize="25dp" android:textStyle="bold|italic" android:paddingLeft="5dp"/>
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/rounded_corners_details_top"
+        android:paddingLeft="5dp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/transcript"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightgrey" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:textColor="@color/black" android:textSize="15dp" android:paddingLeft="10dp"/>
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@color/lightgrey"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightgrey" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:textColor="@color/green" android:typeface="serif" android:textStyle="italic" android:paddingLeft="20dp" android:textSize="15dp"/>
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@color/lightgrey"
+        android:paddingLeft="20dp"
+        android:textColor="@color/green"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:typeface="serif" />
 
     <TextView
         android:id="@+id/trans"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corners_details_botom" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:layout_marginBottom="2dp" android:textColor="@color/black" android:paddingLeft="19dp" android:paddingBottom="2dp"/>
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/rounded_corners_details_botom"
+        android:paddingBottom="2dp"
+        android:paddingLeft="19dp"
+        android:textColor="@color/black" />
 
-    <WebView
-        android:id="@+id/translatege"
-        android:layout_width="fill_parent"
-        android:layout_height="208dp"
-        android:layout_weight="0.85" android:layout_marginLeft="3dp" android:layout_marginRight="3dp"/>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="319dp"
+        android:layout_height="392dp"
+        android:background="@color/beige" />
 
 </LinearLayout>
