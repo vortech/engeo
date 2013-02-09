@@ -3,19 +3,20 @@ package org.herrlado.engeo;
 import java.io.IOException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-
+import org.json.JSONArray;
+import org.json.JSONException;
 import android.os.AsyncTask;
 
 public class GetTranslateGE {
 	static String result;
+	static JSONArray jArray;
 
-	public static String getFromTranslateGe(String url) {
+	public static JSONArray getFromTranslateGe(String url) {
 		final HttpClient client = new DefaultHttpClient();
 		final HttpGet httpGet = new HttpGet(url);
 
@@ -38,7 +39,12 @@ public class GetTranslateGE {
 				return null;
 			}
 		}.execute();
-
-		return result;
+		
+		try {
+			jArray = new JSONArray(result);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jArray;
 	}
 }
