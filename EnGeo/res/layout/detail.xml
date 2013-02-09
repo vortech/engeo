@@ -58,6 +58,10 @@
         android:id="@+id/textView1"
         android:layout_width="319dp"
         android:layout_height="392dp"
-        android:background="@color/beige" />
+        android:background="@color/beige"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textColor="@color/black"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>
