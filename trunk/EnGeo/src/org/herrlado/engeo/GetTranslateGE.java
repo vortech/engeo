@@ -10,7 +10,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
-import android.os.AsyncTask;
 
 public class GetTranslateGE {
 	static String result;
@@ -20,26 +19,18 @@ public class GetTranslateGE {
 		final HttpClient client = new DefaultHttpClient();
 		final HttpGet httpGet = new HttpGet(url);
 
-		new AsyncTask<Void, Void, Void>() {
-
-			@Override
-			protected Void doInBackground(Void... params) {
-				try {
-					HttpResponse response = client.execute(httpGet);
-					HttpEntity entity = response.getEntity();
-					if(entity != null){
-						result = EntityUtils.toString(entity);
-					}
-				} catch (ClientProtocolException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
-				return null;
+		try {
+			HttpResponse response = client.execute(httpGet);
+			HttpEntity entity = response.getEntity();
+			if(entity != null){
+				result = EntityUtils.toString(entity);
 			}
-		}.execute();
-		
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		try {
 			jArray = new JSONArray(result);
 		} catch (JSONException e) {
@@ -48,3 +39,4 @@ public class GetTranslateGE {
 		return jArray;
 	}
 }
+

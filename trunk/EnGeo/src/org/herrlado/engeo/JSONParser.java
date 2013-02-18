@@ -14,8 +14,8 @@ public class JSONParser {
 	private static final String TAG_WORD = "Word";
 	private static final String TAG_TEXT = "Text";
 
-	public static String GetStringFromJson(String url){
-		jArray = GetTranslateGE.getFromTranslateGe(url);
+	public static String GetStringFromJson(JSONArray array){
+		jArray = array;
 		map = new HashMap<String, String>();		
 
 		for(int i = 0; i < jArray.length(); i++){
