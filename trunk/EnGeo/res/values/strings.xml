@@ -42,5 +42,6 @@
 	<string name="share">Share</string>
 	<string name="details">Detailed View</string>
 	<string name="debug_">Debug</string>
-	<string name="type_your_word">Type your word</string>	
+	<string name="type_your_word">Type your word</string>
+	<string name="netError">ინტერნეტთან კავშირის პრობლემა</string>	
 </resources>

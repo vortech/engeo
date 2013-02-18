@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetailView extends Activity {
 
@@ -60,6 +61,12 @@ public class DetailView extends Activity {
 			return;
 
 		} else {
+			
+			if (!isNetAvailable()) {
+                Toast.makeText(this, R.string.netError, Toast.LENGTH_LONG)
+                                .show();
+                return;
+        }
 
 			new AsyncTask<Void, Void, JSONArray>() {
 
