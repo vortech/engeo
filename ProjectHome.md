@@ -1,0 +1,1 @@
+EnGeo is english-georgian / georgian-english dictionary for android which also supports quering word on translate.ge
